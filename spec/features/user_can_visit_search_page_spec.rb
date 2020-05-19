@@ -7,6 +7,20 @@ RSpec.describe 'as a user when I select Gryffindor and click Search for Members'
       find(:select, "house").first(:option, 'Gryffindor').select_option
       click_button 'Search For Members'
       expect(current_path).to eq(search_path)
+      expect(page).to have_selector('.Gryffindor-characters', count: 21)
+      within ('#Sirius') do
+        expect(page).to have_content('Name: Sirius Black')
+        expect(page).to have_content('Role: Role Unknown')
+        expect(page).to have_content('House: Gryffindor')
+        expect(page).to have_content('Patronus: Patronus Unknown')
+      end
+
+      within ('#Aberforth') do
+        expect(page).to have_content('Name: Aberforth Dumbledore')
+        expect(page).to have_content("Role: Owner, Hog's Head Inn")
+        expect(page).to have_content('House: Gryffindor')
+        expect(page).to have_content('Goat')
+      end
     end
   end
 end
