@@ -1,0 +1,12 @@
+<h1><%= @house %> Characters</h1>
+
+<% @characters.each do |character| %>
+  <div class="<%= @house %>-characters" id=<%= character.name %>>
+    <p>Name: <%= character.name %></p>
+    <ul>
+      <li>Role: <%= character.role %></li>
+      <li>House: <%= character.house %></li>
+      <li>Patronus: <%= character.patronus %></li>
+    </ul>
+  </div>
+<% end %>
